@@ -12,7 +12,7 @@
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath*:com/triplus/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath*:com/triplus/*/mapper/*.xml"/>
     </bean>
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
@@ -21,9 +21,9 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.triplus.mapper"/>
+        <property name="basePackage" value="com.triplus.*.mapper"/>
     </bean>
-    <context:component-scan base-package="com.triplus.service"/>
+    <context:component-scan base-package="com.triplus.*.service"/>
     <tx:advice id="advice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="insert*" propagation="REQUIRED"/>
@@ -31,7 +31,7 @@
         </tx:attributes>
     </tx:advice>
     <aop:config>
-        <aop:pointcut id="pointCut" expression="execution(* com.triplus.service.*Service*.*(..))"/>
+        <aop:pointcut id="pointCut" expression="execution(* com.triplus.*.service.*Service*.*(..))"/>
         <aop:advisor advice-ref="advice" pointcut-ref="pointCut"/>
     </aop:config>
 </beans>
