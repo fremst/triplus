@@ -3,7 +3,7 @@
   가장 기본적인 게시판 폼입니다.
   
   [ 프로퍼티 ]
-  detailLnk : String
+  detailLink : String
     게시글 조회를 시도할 때 GET 요청을 보낼 URL을 설정합니다.
   board : {
     title : String
