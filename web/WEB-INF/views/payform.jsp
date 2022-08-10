@@ -2,7 +2,6 @@
 <!DOCTYPE HTML>
 <head>
     <meta charset="UTF-8"/>
-    <%--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
     <script charset="UTF-8" src="https://stdpay.inicis.com/stdjs/INIStdPay.js"
             type="text/javascript"></script>
     <title>PayForm</title>
@@ -25,6 +24,9 @@
     <input type="hidden" name="currency" value="WON">
     <input type="hidden" name="returnUrl" value="http://localhost:8082/triplus/api/v1/pay/return">
     <input type="hidden" name="closeUrl" value="http://localhost:8082/triplus/api/v1/pay/close">
+
+    <input type="hidden" name="payViewType" value="popup">
+    <input type="hidden" name="popupUrl" value="http://localhost:8082/triplus/api/v1/pay/popup">
 </form>
 <script>
     INIStdPay.pay('PayForm')

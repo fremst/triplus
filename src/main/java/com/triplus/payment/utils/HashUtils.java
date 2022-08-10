@@ -1,39 +1,54 @@
 package com.triplus.payment.utils;
 
-
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class HashUtils {
 
     public static String getSignature(String oid, int price, long timestamp) {
         String params = "oid=" + oid + "&price=" + price + "&timestamp=" + timestamp;
-        return sha256Encrypt(params);
+        return getSHA_256(params);
     }
 
     public static String getAuthSignature(String authToken, long timestamp) {
         String params = "authToken=" + authToken + "&timestamp=" + timestamp;
-        return sha256Encrypt(params);
+        return getSHA_256(params);
     }
 
     public static String getMkey(String mid) {
-        return sha256Encrypt(mid);
+        return getSHA_256(mid);
     }
 
-    private static String sha256Encrypt(String params) {
+    public static String getSHA_256(String input) {
+
+        String toReturn = null;
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(params.getBytes(StandardCharsets.UTF_8));
-            StringBuilder hexString = new StringBuilder();
-
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
+            digest.reset();
+            digest.update(input.getBytes(StandardCharsets.UTF_8));
+            toReturn = String.format("%064x", new BigInteger(1, digest.digest()));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        return toReturn;
     }
+
+    public static String getSHA_512(String input) {
+
+        String toReturn = null;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-512");
+            digest.reset();
+            digest.update(input.getBytes(StandardCharsets.UTF_8));
+            toReturn = String.format("%0128x", new BigInteger(1, digest.digest()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return toReturn;
+    }
+
 }

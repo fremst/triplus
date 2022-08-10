@@ -1,4 +1,4 @@
-package com.triplus.payment.domain;
+package com.triplus.payment.dto;
 
 
 import lombok.AllArgsConstructor;

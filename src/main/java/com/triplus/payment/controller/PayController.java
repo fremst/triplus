@@ -1,7 +1,7 @@
 package com.triplus.payment.controller;
 
-import com.triplus.payment.domain.PcPayRequest;
-import com.triplus.payment.domain.PcPayReturn;
+import com.triplus.payment.dto.PcPayRequest;
+import com.triplus.payment.dto.PcPayReturn;
 import com.triplus.payment.service.PayService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,14 +28,28 @@ public class PayController {
     }
 
     @GetMapping("/close")
-    public String PcClose() {
+    public String pcClose() {
         return "close";
     }
 
+    //    @PostMapping("/return")
+//    public String pcReturn(PcPayReturn pcPayReturn) throws IllegalAccessException, IOException, InterruptedException {
+//        System.out.println(payService.checkPcReturn(pcPayReturn.getResultCode(), pcPayReturn.getMid(), pcPayReturn.getOrderNumber(), pcPayReturn.getAuthToken(), pcPayReturn.getAuthUrl(), pcPayReturn.getCharset()));
+////        System.out.println(payService.checkPcReturn(pcPayReturn.getResultCode(), pcPayReturn.getResultMsg(), pcPayReturn.getMid(), pcPayReturn.getOrderNumber(), pcPayReturn.getAuthToken(), pcPayReturn.getAuthUrl(), pcPayReturn.getNetCancelUrl(), pcPayReturn.getCharset(), pcPayReturn.getMerchantData()));
+//        return "redirect:http://localhost:8081/resources/PayComplete";
+//    }
     @PostMapping("/return")
-    public String pcReturn(PcPayReturn pcPayReturn) throws IllegalAccessException, IOException, InterruptedException {
-        payService.checkPcReturn(pcPayReturn.getResultCode(), pcPayReturn.getResultMsg(), pcPayReturn.getMid(), pcPayReturn.getOrderNumber(), pcPayReturn.getAuthToken(), pcPayReturn.getAuthUrl(), pcPayReturn.getNetCancelUrl(), pcPayReturn.getCharset(), pcPayReturn.getMerchantData());
+    public String pcReturn() {
+        return "INIStdPayReturn";
+    }
 
-        return "redirect:http://localhost:8081/resources/PayComplete";
+    @GetMapping("/popup")
+    public String pcPopup() {
+        return "popup";
+    }
+
+    @GetMapping("/refund")
+    public String pcRefund() {
+        return "INISTdPayRefund";
     }
 }

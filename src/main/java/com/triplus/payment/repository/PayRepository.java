@@ -1,6 +1,6 @@
 package com.triplus.payment.repository;
 
-import com.triplus.payment.domain.OrderData;
+import com.triplus.payment.dto.OrderData;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

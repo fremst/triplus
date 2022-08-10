@@ -1,6 +1,6 @@
 package com.triplus.payment.service;
 
-import com.triplus.payment.domain.OrderData;
+import com.triplus.payment.dto.OrderData;
 import com.triplus.payment.repository.PayRepository;
 import com.triplus.payment.utils.HashUtils;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,6 @@ public class PayService {
     private static final HttpClient httpClient = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(10))
             .build();
-    //    @Autowired
     private final PayRepository payRepository;
 
     public static HttpRequest.BodyPublisher ofFormData(Map<Object, Object> data) {
@@ -44,7 +43,9 @@ public class PayService {
         payRepository.saveOrder(orderNumber, timestamp, signature, price);
     }
 
-    public String checkPcReturn(String resultCode, String resultMsg, String mid, String orderNumber, String authToken, String authUrl, String netCancelUrl, String charset, String merchantData) throws IllegalAccessException, IOException, InterruptedException {
+    //        public String checkPcReturn(String resultCode, String resultMsg, String mid, String orderNumber, String authToken, String authUrl, String netCancelUrl, String charset, String merchantData) throws IllegalAccessException, IOException, InterruptedException {
+    public String checkPcReturn(String resultCode, String mid, String orderNumber, String authToken, String authUrl, String charset) throws IllegalAccessException, IOException, InterruptedException {
+
         if (!"0000".equals(resultCode)) throw new IllegalAccessException("결제 실패");
 
         OrderData orderData = payRepository.getOrder(orderNumber);
