@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import QnAView from '../views/member/service/QnAView.vue'
+import QnAWriteView from '../views/member/service/QnAWriteView.vue'
+import QnADetailView from '../views/member/service/QnADetailView.vue'
 
 const routes = [
   {
@@ -24,6 +27,11 @@ const routes = [
     path: '/service/qna/write',
     name: 'qna-write',
     component: QnAWriteView
+  },
+  {
+    path: '/service/qna/detail',
+    name: 'qna-detail',
+    component: QnADetailView
   }
 ]
 
