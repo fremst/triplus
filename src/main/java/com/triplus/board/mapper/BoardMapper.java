@@ -1,6 +1,6 @@
 package com.triplus.board.mapper;
 
-import com.triplus.dto.board.BoardDto;
+import com.triplus.board.dto.BoardDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;

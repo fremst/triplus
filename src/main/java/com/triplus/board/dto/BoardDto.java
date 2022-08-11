@@ -1,4 +1,4 @@
-package com.triplus.dto.board;
+package com.triplus.board.dto;
 
 
 import lombok.AllArgsConstructor;

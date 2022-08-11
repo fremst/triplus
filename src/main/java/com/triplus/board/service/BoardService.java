@@ -1,6 +1,6 @@
 package com.triplus.board.service;
 
-import com.triplus.dto.board.BoardDto;
+import com.triplus.board.dto.BoardDto;
 import com.triplus.board.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
