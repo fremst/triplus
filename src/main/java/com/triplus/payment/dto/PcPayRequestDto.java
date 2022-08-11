@@ -10,7 +10,7 @@ import static java.lang.System.currentTimeMillis;
 @ToString
 @Getter
 @Setter
-public class PcPayRequest {
+public class PcPayRequestDto {
 
     private String gopaymethod;
     private String mid;
@@ -27,7 +27,7 @@ public class PcPayRequest {
     private String buyertel;
     private String buyeremail;
 
-    public PcPayRequest(String gopaymethod, int price, String goodname, String buyername, String buyertel, String buyeremail) {
+    public PcPayRequestDto(String gopaymethod, int price, String goodname, String buyername, String buyertel, String buyeremail) {
         this.gopaymethod = gopaymethod;
         this.mid = "INIpayTest";
         this.price = price;
@@ -40,6 +40,5 @@ public class PcPayRequest {
         this.buyername = buyername;
         this.buyertel = buyertel;
         this.buyeremail = buyeremail;
-
     }
 }

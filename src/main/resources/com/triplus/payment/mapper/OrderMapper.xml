@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.triplus.payment.mapper.OrderMapper">
+    <insert id="insert" parameterType="com.triplus.payment.dto.OrderDto">
+        insert into "ORDER" (OID, BRDNUM, ID, ADULTCNT, CHILDCNT, BOOKERNAME, BOOKERTEL, BOOKEREMAIL, CPNNUM, RESSTA)
+        values (#{oid}, #{brdNum}, #{id}, #{adultCnt}, #{childCnt}, #{bookerName}, #{bookerTel}, #{bookerEmail},
+                #{cpnNum}, #{ressta})
+    </insert>
+</mapper>

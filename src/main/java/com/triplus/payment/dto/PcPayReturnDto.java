@@ -7,7 +7,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class PcPayReturn {
+public class PcPayReturnDto {
     private String resultCode;
     //    private String resultMsg;
     private String mid;
